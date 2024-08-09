@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/assets/images/WorkingLogo.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/images/192WorkingLogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Laquer:wght@400;&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800;&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="RolldUp cannabis rating and review app. PreRolls, Flower, Concentrate, Edible, Cartridge, and Topical. THC and CBD. Rank up and earn badges. Connect with the cannabis community and find the right product for you!" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <script>
+    window.env = {
+      REACT_APP_BACKEND_API_BASE_URL: "%REACT_APP_BACKEND_API_BASE_URL%",
+      REACT_APP_CLIENT_ID: "%REACT_APP_CLIENT_ID%",
+      REACT_APP_ADB2C_AUTHORITY_BASE_URL: "%REACT_APP_ADB2C_AUTHORITY_BASE_URL%",
+      REACT_APP_ENVIRONMENT: "%REACT_APP_ENVIRONMENT%",
+      REACT_APP_INSIGHTS_CONNECTION_STRING: "%REACT_APP_INSIGHTS_CONNECTION_STRING%",
+      REACT_APP_LOGOUT_REDIRECT_URL: "%REACT_APP_LOGOUT_REDIRECT_URL%",
+      REACT_APP_AAD_PRIMARY_POLICY: "%REACT_APP_AAD_PRIMARY_POLICY%",
+      REACT_APP_AAD_FORGOT_PASSWORD_POLICY: "%REACT_APP_AAD_FORGOT_PASSWORD_POLICY%",
+      REACT_APP_AAD_EDIT_PROFILE_POLICY: "%REACT_APP_AAD_EDIT_PROFILE_POLICY%"
+    };
+  </script>
+  <title>RolldUp</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const registerServiceWorker = async () => {
+      if ("serviceWorker" in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.register("/serviceWorker.js", {
+            scope: "/",
+          });
+          if (registration.installing) {
+            console.log("Service worker installing");
+          } else if (registration.waiting) {
+            console.log("Service worker installed");
+          } else if (registration.active) {
+            console.log("Service worker active");
+          }
+          registration.update();
+          setInterval(() => {
+            registration.update();
+          }, 1000 * 60 * 5 /*5 minutes*/);
+        } catch (error) {
+          console.error(`Registration failed with ${error}`);
+        }
+      }
+    };
+    registerServiceWorker();
+  </script>
+</body>
+
+</html>

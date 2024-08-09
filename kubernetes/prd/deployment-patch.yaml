@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-end
+  template:
+    spec:
+      containers:
+      - name: front-end
+        env:
+        - name: REACT_APP_BACKEND_API_BASE_URL
+          value: https://backend.prd30.rolldupapp.com/
+        - name: REACT_APP_CLIENT_ID
+          value: 0c6a6f8b-f219-4c15-89fe-58917db98f66
+        - name: REACT_APP_ADB2C_AUTHORITY_BASE_URL
+          value: https://login.rolldupapp.com/prd30rolldupappcom.onmicrosoft.com/
+        - name: REACT_APP_ENVIRONMENT
+          value: prod
+        - name: REACT_APP_LOGOUT_REDIRECT_URL
+          value: https://rolldupapp.com/

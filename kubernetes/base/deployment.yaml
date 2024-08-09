@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-end
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: front-end
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 50
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - front-end
+              topologyKey: kubernetes.io/hostname
+      containers:
+      - name: front-end
+        image: front-end:IMAGE_PLACEHOLDER
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "10m"
+        ports:
+        - containerPort: 80
+          name: http
+        livenessProbe:
+          httpGet:
+            path: "/"
+            port: "http"
+          periodSeconds: 4
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: "/"
+            port: "http"
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sleep", "90"]
+        env:
+        - name: REACT_APP_AAD_PRIMARY_POLICY
+          value: B2C_1A_SIGNUP_SIGNIN
+        - name: REACT_APP_AAD_FORGOT_PASSWORD_POLICY
+          value: B2C_1A_PASSWORDRESET
+        - name: REACT_APP_AAD_EDIT_PROFILE_POLICY
+          value: B2C_1_EDIT_PROFILE
+      terminationGracePeriodSeconds: 101

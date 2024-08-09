@@ -1,0 +1,15 @@
+[
+      {
+            "relation": [
+                  "delegate_permission/common.handle_all_urls"
+            ],
+            "target": {
+                  "namespace": "android_app",
+                  "package_name": "com.rolldupapp.twa",
+                  "sha256_cert_fingerprints": [
+                        "AA:0F:58:C4:89:1A:DE:82:83:A1:AF:1B:0B:D8:60:6A:D1:8A:01:DB:45:AE:E0:2C:77:22:8C:BD:47:91:26:7C",
+                        "B3:26:5E:41:27:4E:1C:84:F0:5F:2A:CE:8E:BC:5C:56:2A:DB:21:C1:6D:F3:72:82:90:64:6F:8F:30:C0:2B:BB"
+                  ]
+            }
+      }
+]

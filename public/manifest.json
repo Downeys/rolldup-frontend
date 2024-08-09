@@ -1,0 +1,35 @@
+{
+  "short_name": "RolldUp",
+  "name": "RolldUp",
+  "icons": [
+    {
+      "src": "./assets/images/logo48x.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "./assets/images/logo128x.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./assets/images/logo144x.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "./assets/images/logo192x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./assets/images/logo512x.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
